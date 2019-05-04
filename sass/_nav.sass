@@ -1,0 +1,107 @@
+$padding: .8rem
+.nav
+  --color: grey
+  color: var(--light)
+  box-shadow: $box-shadow
+  background: var(--color)
+  font-size: 0rem
+  overflow: hidden
+  transition: .5s
+  position: fixed
+  width: 100%
+  top: 0
+  &__title, &__list
+    padding: $padding
+  @include breakpoint("sm")
+    width: 25%
+    height: 100vh
+    &__title, &__list
+      padding: 1rem
+  @include breakpoint("md")
+    &__title, &__list
+      padding: 1.15rem
+  @include breakpoint("lg")
+    &__title, &__list
+      padding: 1.5rem
+  @include breakpoint("xl")
+    width: 20%
+
+  &__title
+    position: relative
+    .logo
+      --size: 3rem
+      font-size: var(--size)
+      @include breakpoint("sm")
+        --size: 3.5rem
+        margin-top: var(--size)
+        margin-bottom: 3rem
+      @include breakpoint("md")
+        --size: 4rem
+      @include breakpoint("lg")
+        --size: 5rem
+
+  &__opener-indicator
+    color: var(--color)
+    font-size: 1.5rem
+    cursor: pointer
+    line-height: 3rem
+    position: absolute
+    top: 1rem
+    right: 1rem
+    @include breakpoint("sm")
+      display: none
+
+  &__opener
+    display: none
+
+  &__list
+    border-top: 1px solid var(--light-transparent)
+    font-size: 1rem
+    max-height: 0rem
+    list-style: none
+    transition: .5s
+    height: auto
+    overflow: hidden
+    background: var(--color)
+    padding: 0rem $padding
+    @include breakpoint("sm")
+      max-height: initial
+      padding: 1.15rem
+
+  &__opener:checked ~ &__list
+    @include breakpoint("sm", true)
+      max-height: 20rem
+      padding: 2rem $padding
+
+  &__opener ~ &__opener-indicator
+    transition: .5s
+    & .nav__opener-indicator__open
+      display: initial
+    & .nav__opener-indicator__close
+      display: none
+
+  &__opener:checked ~ &__opener-indicator
+    transform: rotate(90deg)
+    & .nav__opener-indicator__open
+      display: none
+    & .nav__opener-indicator__close
+      display: initial
+
+  &__item
+    margin-bottom: 1em
+    &:last-child
+      margin-bottom: 0
+    @include breakpoint("sm")
+      margin-bottom: 0
+      line-height: 3rem
+
+  &__link
+    text-decoration: none
+    color: inherit
+    text-transform: uppercase
+    font-weight: bold
+    transition: .5s
+    border-width: 0px
+    &:hover
+      border-left: 2rem solid white
+      padding-left: 1rem

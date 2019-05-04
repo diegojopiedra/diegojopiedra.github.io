@@ -1,0 +1,15 @@
+@mixin breakpoint($breakpoint, $toUp: false){
+  $condition: "";
+  $pixes: map-get($breakpoints, $breakpoint);
+  @if ($toUp){
+    $condition: "max-width";
+    $pixes: $pixes - 1;
+  }@else{
+    $condition: "min-width";
+  }
+
+
+  @media screen and (#{$condition}: $pixes){
+    @content;
+  }
+}

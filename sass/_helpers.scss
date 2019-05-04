@@ -1,0 +1,114 @@
+:root{
+  @each $name, $color in $colors{
+    --#{$name}: #{$color};
+    --#{$name}-transparent: #{rgba($color, .4)};
+  }
+}
+
+@each $name, $color in $colors{
+  .#{$name}{
+    --color: var(--#{$name})
+  }
+
+  .#{$name}-transparent{
+    --color: var(--#{$name}-transparent)
+  }
+
+  .text-#{$name}{
+    color: var(--#{$name})
+  }
+
+  .bg-#{$name}{
+    background: var(--#{$name})
+  }
+}
+
+%force-vertical-center{
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.size{
+  @extend %size
+}
+
+%size{
+  @each $breakpoint, $value in $breakpoints{
+    @include breakpoint($breakpoint){
+      &::after{
+        content: $breakpoint;
+        bottom: 1rem;
+        right: 1rem;
+        background: #000000e8;
+        color: white;
+        padding: 1rem;
+        position: fixed;
+      }
+    }
+  }
+}
+
+.characteristics{
+  color: white;
+  text-align: center;
+  &::after{
+    @extend %characteristics;
+  }
+}
+
+%characteristics{
+  $time-per-letter: .04s;
+  $time-to-wait: 3s;
+  $characteristics: 'desarrollador web', 'programador', 'tutor de programación', 'administrador de bases de datos', 'entusiasta de la tecnología';
+
+  $letters: 0;
+  @each $characteristic in $characteristics{
+    $letters: $letters + str-length($characteristic);
+  }
+
+  $letters: $letters * 2;
+
+  $total-time-to-wait: length($characteristics) * $time-to-wait;
+  $total-time-per-letter: $letters * $time-per-letter;
+  $total-time: $total-time-to-wait + $total-time-per-letter;
+
+  $time-percent-unit: 100 / ($total-time / $time-per-letter);
+  $wait-percent-unit: 100 / ($total-time / $time-to-wait);
+
+  --letters: #{$letters};
+  --total-time: #{$total-time};
+  --time-per-letter: #{$time-per-letter};
+  --time-percent-unit: #{$time-percent-unit};
+  --wait-percent-unit: #{$wait-percent-unit};
+
+  content: '';
+  font-weight: bold;
+  animation: characteristics $total-time infinite linear;
+
+  @keyframes characteristics{
+    $last-time: 0;
+    @each $characteristic in $characteristics{
+      // $letters: $letters + str-length($characteristic);
+      @for $i from 1 through str-length($characteristic) {
+        $last-time: $last-time + $time-percent-unit;
+        #{$last-time}%{
+          content: str-slice($characteristic, 1, $i);
+        }
+      }
+
+      $last-time: $last-time + $wait-percent-unit;
+      #{$last-time}%{
+        content: $characteristic;
+      }
+
+      @for $i from str-length($characteristic) through 1 {
+        $last-time: $last-time + $time-percent-unit;
+        #{$last-time}%{
+          content: str-slice($characteristic, 1, $i);
+        }
+      }
+    }
+  }
+}

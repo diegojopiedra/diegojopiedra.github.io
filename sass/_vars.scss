@@ -1,0 +1,23 @@
+$base-font-size: 16px;
+$shadow: 0 0 10px 0px #00000052;
+$box-shadow: $shadow;
+$text-shadow: $shadow;
+
+$space: 4.599375rem;
+
+$colors: (
+  // 'primary': #104e92,
+  'primary': #041230,
+  // 'secondary': #f44336,
+  'secondary': #E3872D,
+  'light': white,
+  'back': #f8f9fa
+);
+
+$breakpoints: (
+  'xs': 0px,
+  'sm': 700px,
+  'md': 800px,
+  'lg': 1000px,
+  'xl': 1200px
+);
