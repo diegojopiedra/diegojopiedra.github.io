@@ -5,11 +5,15 @@ $padding: .8rem
   box-shadow: $box-shadow
   background: var(--color)
   font-size: 0rem
-  overflow: hidden
+  // overflow: hidden
   transition: .5s
   position: fixed
   width: 100%
   top: 0
+  z-index: 99
+  overflow-y: auto
+
+
   &__title, &__list
     padding: $padding
   @include breakpoint("sm")
