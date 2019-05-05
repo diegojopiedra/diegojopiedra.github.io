@@ -23,6 +23,10 @@
   }
 }
 
+:focus {
+  outline: 0;
+}
+
 %force-vertical-center{
   position: absolute;
   top: 50%;
@@ -59,56 +63,19 @@
 }
 
 %characteristics{
-  $time-per-letter: .04s;
-  $time-to-wait: 3s;
-  $characteristics: 'desarrollador web', 'programador', 'tutor de programación', 'administrador de bases de datos', 'entusiasta de la tecnología';
+  $characteristics:
+  'desarrollador web',
+  'programador',
+  'tutor de programación',
+  'admin de bases de datos',
+  'entusiasta de la tecnología';
+  @include text-animation($characteristics);
+}
 
-  $letters: 0;
-  @each $characteristic in $characteristics{
-    $letters: $letters + str-length($characteristic);
-  }
+.mt{
+  margin-top: $margin;
+}
 
-  $letters: $letters * 2;
-
-  $total-time-to-wait: length($characteristics) * $time-to-wait;
-  $total-time-per-letter: $letters * $time-per-letter;
-  $total-time: $total-time-to-wait + $total-time-per-letter;
-
-  $time-percent-unit: 100 / ($total-time / $time-per-letter);
-  $wait-percent-unit: 100 / ($total-time / $time-to-wait);
-
-  --letters: #{$letters};
-  --total-time: #{$total-time};
-  --time-per-letter: #{$time-per-letter};
-  --time-percent-unit: #{$time-percent-unit};
-  --wait-percent-unit: #{$wait-percent-unit};
-
-  content: '';
-  font-weight: bold;
-  animation: characteristics $total-time infinite linear;
-
-  @keyframes characteristics{
-    $last-time: 0;
-    @each $characteristic in $characteristics{
-      // $letters: $letters + str-length($characteristic);
-      @for $i from 1 through str-length($characteristic) {
-        $last-time: $last-time + $time-percent-unit;
-        #{$last-time}%{
-          content: str-slice($characteristic, 1, $i);
-        }
-      }
-
-      $last-time: $last-time + $wait-percent-unit;
-      #{$last-time}%{
-        content: $characteristic;
-      }
-
-      @for $i from str-length($characteristic) through 1 {
-        $last-time: $last-time + $time-percent-unit;
-        #{$last-time}%{
-          content: str-slice($characteristic, 1, $i);
-        }
-      }
-    }
-  }
+.mb{
+  margin-bottom: $margin;
 }

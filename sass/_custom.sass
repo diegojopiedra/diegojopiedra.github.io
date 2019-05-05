@@ -5,7 +5,7 @@
   background: map-get($colors, 'primary')
   position: relative
   display: flex
-  justify-content: center
+  text-align: center
   @include breakpoint('sm')
     align-items: center
 
@@ -28,6 +28,7 @@
     position: relative
 
   .section__wrap
-    padding: $space + 1rem 1rem 1rem
+    padding: $space/3 1rem 1rem
+    width: 100%
     @include breakpoint('sm')
       padding: $space 0
