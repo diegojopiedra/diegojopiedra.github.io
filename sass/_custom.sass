@@ -35,3 +35,10 @@
 
 #portfolio
   background: #{map-get($colors, 'generador')}
+
+.contact
+  display: grid
+  @include breakpoint('md')
+    grid-template-columns: 42% 1fr
+  @include breakpoint('lg')
+    grid-template-columns: 35% 1fr

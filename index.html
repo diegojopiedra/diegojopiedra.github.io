@@ -61,7 +61,7 @@
           <a class="card__tag fb" href="https://www.facebook.com/GeneradorDeHorarios/" target="_blank">Facebook +8k <i class="icon ion-md-thumbs-up"></i></a>
         </div>
         <div class="card__text">
-          <img src="img/generador-logo.webp" alt="">
+          <img src="img/generador-logo.webp" class="mb">
           <h3 class="card__title text-generador">Generador de horarios</h3>
           <p class="text-black text-font">
             Este es un proyecto creado por estudiantes entusiastas de la Universidad de Costa Rica, los cuales en su tiempo libre tomaron la iniciativa de hacer un programa para crear horarios y compartirlo para que otros estudiantes lo pudieran utilizar.
@@ -74,6 +74,29 @@
     </section>
     <section id="contact" class="section">
       <h2 class="section__title text-primary mt mb x3">Contacto</h2>
+
+      <div class="contact">
+        <div class="contact__text">
+          <h3 class="mb text-secondary x3">Datos de contacto</h3>
+          <p class="text-black mb x3">
+            <b>Email:</b> diego.piedraaraya@ucr.ac.cr
+          </p>
+          <p class="text-black mb x3">
+            <b>WhatsApp:</b> (506) 8655 6068
+          </p>
+        </div>
+        <form class="form contact__form" method="POST" action="https://formspree.io/diegojopiedra@gmail.com">
+          <input type="email" name="Correo" placeholder="Correo electrónico" class="form__input" required>
+          <select name="Solicitud" class="form__input">
+            <option>Solicitar como desarrollador de software</option>
+            <option>Solicitar como tutor</option>
+            <option>Consulta</option>
+            <option>Otros</option>
+          </select>
+          <textarea name="Mensaje" placeholder="Mensaje" class="form__area" required></textarea>
+          <input type="submit" formtarget="_blank" class="btn secondary" value="Enviar" />
+        </form>
+      </div>
     </section>
     <footer>
 
