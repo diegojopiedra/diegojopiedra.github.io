@@ -73,9 +73,35 @@
 }
 
 .mt{
-  margin-top: $margin;
+  --size: #{$margin};
+  margin-top: var(--size);
 }
 
 .mb{
-  margin-bottom: $margin;
+  --size: #{$margin};
+  margin-bottom: var(--size);
+}
+
+.mt, .mb{
+  @for $i from 2 through 6{
+    &.x#{$i}{
+      --size: #{$i*$margin};
+    }
+  }
+}
+
+.hide{
+  display: none;
+}
+
+.text-font{
+  font-family: 'Crimson Text', serif;
+}
+
+.pull-left{
+  float: left;
+}
+
+.pull-right{
+  float: right;
 }

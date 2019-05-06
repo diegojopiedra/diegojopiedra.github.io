@@ -33,12 +33,6 @@
   $time-percent-unit: 100 / ($total-time / $time-per-letter);
   $wait-percent-unit: 100 / ($total-time / $time-to-wait);
 
-  --letters: #{$letters};
-  --total-time: #{$total-time};
-  --time-per-letter: #{$time-per-letter};
-  --time-percent-unit: #{$time-percent-unit};
-  --wait-percent-unit: #{$wait-percent-unit};
-
   content: '';
   font-weight: bold;
   animation: characteristics $total-time infinite linear;
