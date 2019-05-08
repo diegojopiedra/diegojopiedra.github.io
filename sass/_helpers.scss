@@ -105,3 +105,24 @@
 .pull-right{
   float: right;
 }
+
+.shadow{
+  @extend %shadow;
+}
+
+%shadow{
+  box-shadow: 0 0 10px 0px #00000024;
+}
+
+@for $i from 2 through 6{
+  .font-x#{$i}{
+    font-size: #{$i}rem;
+  }
+}
+
+.hover{
+  transition: .3s;
+  &:hover{
+    transform: translateY(-1rem);
+  }
+}

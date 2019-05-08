@@ -1,0 +1,13 @@
+.grid
+  display: grid
+  @for $i from 1 through 4
+    &.gx#{$i}
+      grid-gap: $margin * $i
+
+  @each $key, $breakpoint in $breakpoints
+    @include breakpoint($key)
+      @for $i from 1 through 12
+          &.col-#{$key}-#{$i}
+            --key: #{$key}
+            --breakpoint: #{$breakpoint}
+            grid-template-columns: repeat(#{$i}, 1fr)
