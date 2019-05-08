@@ -82,3 +82,14 @@
 
   @include breakpoint('xl')
     grid-template-columns: 40% 1fr
+
+#about__knoleg
+  display: grid
+  grid-template-columns: 40% 1fr
+  grid-gap: $margin
+  &>:nth-child(odd)
+    padding: $padding/3
+    text-align: right
+
+#about
+  border-bottom: 1px solid map-get($colors, 'black')
